@@ -4,6 +4,12 @@ import ButtonAddFavorite from './ButtonAddFavorite'
 import ButtonAddCheckout from './ButtonAddCheckout'
 
 export default class BookCard {
+  constructor (book) {
+    this.title = book.volumeInfo.title
+    this.price = book.saleInfo.retailPrice ? book.saleInfo.retailPrice.amount : 0
+    this.thumbnail = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : ''
+  }
+
   render () {
     const buttonDetailsComponent = new ButtonDetails()
     const buttonAddFavorite = new ButtonAddFavorite()
@@ -11,11 +17,11 @@ export default class BookCard {
 
     return html`
       <article class="book-card">
-        <img src="" />
+        <img src="${this.thumbnail}" />
         
         <div class="info">
-          <p class="book-title">Nome do livro</p>
-          <p class="book-price">R$ 10,00</p>
+          <p class="book-title">${this.title}</p>
+          <p class="book-price">R$ ${this.price}</p>
         </div>
 
         <div class="actions">

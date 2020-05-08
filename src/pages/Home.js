@@ -4,7 +4,7 @@ import Menu from '../components/Menu'
 import CardsLists from '../components/CardsList'
 
 export default class Home {
-  render () {
+  async render () {
     const headerComponent = new Header()
     const menuComponent = new Menu()
     const cardsListComponent = new CardsLists()
@@ -14,10 +14,10 @@ export default class Home {
         ${headerComponent.render()}
 
         <main>
-          ${menuComponent.render()}
+          ${await menuComponent.render()}
 
           <section class="content">
-              ${cardsListComponent.render()}
+              ${await cardsListComponent.render()}
           </section>
 
         </main>

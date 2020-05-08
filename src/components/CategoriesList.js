@@ -1,30 +1,20 @@
 import { html } from 'htm/preact'
+import BookApi from '../services/bookApi'
 
 export default class CategoriesList {
-  render () {
+  async render () {
+    const api = new BookApi()
+    const categories = await api.getCategories()
+
     return html`
       <ul>
-          <li>
-            <a href="#">Lançamentos</a>
-          </li>
+        ${categories.map(category => {
+          return html`<li>
+            <a href="#">${category.title}</a>
+          </li>`
+        })}
 
-          <li>
-            <a href="#">Mais vendidos</a>
-          </li>
-
-          <li>
-            <a href="#">Ficção</a>
-          </li>
-
-          <li>
-            <a href="#">Tecnologia</a>
-          </li>
-
-          <li>
-            <a href="#">Romances</a>
-          </li>
-
-        </ul>
+      </ul>
     `
   }
 }
