@@ -7,7 +7,9 @@ export default class Header {
 
     return html`
       <header>
-        <h1>Livraria da TargetTrust</h1>
+        <h1>
+          <a href="/#">Livraria da TargetTrust</a>
+        </h1>
 
         ${searchInput.render()}
 

@@ -1,5 +1,4 @@
 import { html } from 'htm/preact'
-import BookApi from '../services/bookApi'
 
 export default class Search {
   async doSearch (event) {
@@ -7,12 +6,9 @@ export default class Search {
       // busca o valor que o usuario digitou no campo
       const valueToSearch = event.target.value
 
-      // busca com base nesse valor na api do Google
-      const api = new BookApi()
-      const results = await api.search(valueToSearch)
+      const valueReplaced = valueToSearch.replace(/\s/g, '+')
 
-      // coloca o resultado no console do browser
-      console.log('Resultado da pesquisa', results)
+      global.router.navigateTo(`pesquisa/${valueReplaced}`)
     }
   }
 
