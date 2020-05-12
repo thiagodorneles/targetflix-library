@@ -6,6 +6,7 @@ import Header from './components/Header'
 import Menu from './components/Menu'
 import BookDetails from './pages/BookDetails'
 import Favorites from './pages/Favorites'
+import Checkout from './pages/Checkout'
 
 const router = new Router({
   mode: 'hash'
@@ -15,6 +16,12 @@ router.add('', renderHome)
 router.add(/pesquisa\/([(\w+)]+)/i, renderSearchResults)
 router.add('detalhes/{bookId}', renderBookDetails)
 router.add('favoritos', renderFavorites)
+router.add('carrinho-compras', renderCheckout)
+
+// corrigir problema do roteador que estamos usando atualmente
+if (window.location.href.match(/#$/g)) {
+  window.location.href = window.location.href.replace('#', '')
+}
 
 router.addUriListener()
 router.navigateTo('')
@@ -64,4 +71,10 @@ async function renderFavorites () {
   const favoritesPage = new Favorites()
   const detailsHtml = await favoritesPage.render()
   renderMain(detailsHtml)
+}
+
+async function renderCheckout () {
+  const checkoutPage = new Checkout()
+  const html = checkoutPage.render()
+  renderMain(html)
 }

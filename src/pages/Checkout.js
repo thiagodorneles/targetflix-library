@@ -1,16 +1,16 @@
 import { html } from 'htm/preact'
-import FavoritesService from './../services/favorites'
 import BookHorizontalCard from './../components/BookHorizontalCard'
+import CheckoutService from './../services/checkout'
 
-export default class Favorites {
+export default class Checkout {
   render () {
-    const favoritesService = new FavoritesService()
+    const checkoutService = new CheckoutService()
 
-    const items = favoritesService.getItems()
+    const items = checkoutService.getItems()
 
     return html`
       <section class="checkout">
-        <h1>Meus favoritos</h1>
+        <h1>Carrinho de compras</h1>
 
         ${items.map(bookItem => {
           const bookCardHorizontalItemComponent = new BookHorizontalCard(bookItem)

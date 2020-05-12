@@ -5,6 +5,8 @@ import ButtonAddCheckout from './ButtonAddCheckout'
 
 export default class BookCard {
   constructor (book) {
+    this.book = book
+
     this.title = book.volumeInfo.title
     this.price = book.saleInfo.retailPrice ? book.saleInfo.retailPrice.amount : 0
     this.thumbnail = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : ''
@@ -12,8 +14,8 @@ export default class BookCard {
 
   render () {
     const buttonDetailsComponent = new ButtonDetails()
-    const buttonAddFavorite = new ButtonAddFavorite()
-    const buttonAddCheckout = new ButtonAddCheckout()
+    const buttonAddFavorite = new ButtonAddFavorite(this.book)
+    const buttonAddCheckout = new ButtonAddCheckout(this.book)
 
     return html`
       <article class="book-card">

@@ -13,7 +13,10 @@ export default class Header {
 
         ${searchInput.render()}
 
-        <a href="/#favoritos">Favoritos</a>
+        <div className="links">
+          <a href="/#favoritos">Favoritos</a>
+          <a href="/#carrinho-compras">Carrinho</a>
+        </div>
 
       </header>
     `
