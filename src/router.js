@@ -4,6 +4,8 @@ import Home from './pages/Home'
 import SearchResults from './pages/SearchResults'
 import Header from './components/Header'
 import Menu from './components/Menu'
+import BookDetails from './pages/BookDetails'
+import Favorites from './pages/Favorites'
 
 const router = new Router({
   mode: 'hash'
@@ -11,6 +13,8 @@ const router = new Router({
 
 router.add('', renderHome)
 router.add(/pesquisa\/([(\w+)]+)/i, renderSearchResults)
+router.add('detalhes/{bookId}', renderBookDetails)
+router.add('favoritos', renderFavorites)
 
 router.addUriListener()
 router.navigateTo('')
@@ -48,4 +52,16 @@ async function renderSearchResults (query) {
   const searchResultsPage = new SearchResults()
   const searchHtml = await searchResultsPage.render(query)
   renderMain(searchHtml)
+}
+
+async function renderBookDetails (bookId) {
+  const bookDetailsPage = new BookDetails()
+  const detailsHtml = await bookDetailsPage.render(bookId)
+  renderMain(detailsHtml)
+}
+
+async function renderFavorites () {
+  const favoritesPage = new Favorites()
+  const detailsHtml = await favoritesPage.render()
+  renderMain(detailsHtml)
 }

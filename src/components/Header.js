@@ -13,7 +13,7 @@ export default class Header {
 
         ${searchInput.render()}
 
-        <a href="#">Favoritos</a>
+        <a href="/#favoritos">Favoritos</a>
 
       </header>
     `
