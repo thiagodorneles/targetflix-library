@@ -14,7 +14,7 @@ export default class Favorites {
 
         ${items.map(bookItem => {
           const bookCardHorizontalItemComponent = new BookHorizontalCard(bookItem)
-          return bookCardHorizontalItemComponent.render()
+          return bookCardHorizontalItemComponent.render(true, true, 'favorite')
         })}
 
       </section>

@@ -14,7 +14,7 @@ export default class Checkout {
 
         ${items.map(bookItem => {
           const bookCardHorizontalItemComponent = new BookHorizontalCard(bookItem)
-          return bookCardHorizontalItemComponent.render(false, false)
+          return bookCardHorizontalItemComponent.render(false, false, 'checkout')
         })}
 
       </section>

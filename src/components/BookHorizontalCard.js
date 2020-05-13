@@ -1,6 +1,7 @@
 import { html } from 'htm/preact'
 import ButtonAddCheckout from './ButtonAddCheckout'
 import ButtonDetails from './ButtonDetails'
+import ButtonRemove from './ButtonRemove'
 
 export default class BookHorizontalCard {
   constructor (book) {
@@ -11,9 +12,10 @@ export default class BookHorizontalCard {
     this.thumbnail = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : ''
   }
 
-  render (showCheckoutButton = true, showDescription = true) {
+  render (showCheckoutButton = true, showDescription = true, removeType = '') {
     const buttonAddCheckout = new ButtonAddCheckout(this.book)
     const buttonMoreDetails = new ButtonDetails()
+    const buttonRemove = new ButtonRemove(this.book, removeType)
 
     return html`
       <article class="book-card-horizontal">
@@ -30,6 +32,7 @@ export default class BookHorizontalCard {
         <div class="actions">
           ${showCheckoutButton && buttonAddCheckout.render()}
           ${buttonMoreDetails.render()}
+          ${buttonRemove.render()}
         </div>
 
       </article>
