@@ -4,14 +4,15 @@ import ButtonDetails from './ButtonDetails'
 
 export default class BookHorizontalCard {
   constructor (book) {
+    this.book = book
     this.title = book.volumeInfo.title
     this.description = book.volumeInfo.description
     this.price = book.saleInfo.retailPrice ? book.saleInfo.retailPrice.amount : 0
     this.thumbnail = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : ''
   }
 
-  render () {
-    const buttonAddCheckout = new ButtonAddCheckout()
+  render (showCheckoutButton = true, showDescription = true) {
+    const buttonAddCheckout = new ButtonAddCheckout(this.book)
     const buttonMoreDetails = new ButtonDetails()
 
     return html`
@@ -22,12 +23,12 @@ export default class BookHorizontalCard {
         
         <div class="info">          
           <p class="book-title">${this.title}</p>
-          <p>${this.description}</p>
+          ${showDescription && html`<p>${this.description}</p>`}
           <p class="price">R$ ${this.price}</p>
         </div>
 
         <div class="actions">
-          ${buttonAddCheckout.render()}
+          ${showCheckoutButton && buttonAddCheckout.render()}
           ${buttonMoreDetails.render()}
         </div>
 

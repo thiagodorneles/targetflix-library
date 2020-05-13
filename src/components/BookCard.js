@@ -13,7 +13,7 @@ export default class BookCard {
   }
 
   render () {
-    const buttonDetailsComponent = new ButtonDetails()
+    const buttonDetailsComponent = new ButtonDetails(this.book.id)
     const buttonAddFavorite = new ButtonAddFavorite(this.book)
     const buttonAddCheckout = new ButtonAddCheckout(this.book)
 

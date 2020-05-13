@@ -9,6 +9,10 @@ export default class BookApi {
     return Axios.get('https://www.googleapis.com/books/v1/volumes?q=domain+driven+design+eric+evans').then(r => r.data)
   }
 
+  getBookDetails (bookId) {
+    return Axios.get(`https://www.googleapis.com/books/v1/volumes/${bookId}`).then(r => r.data)
+  }
+
   getCategories () {
     return new Promise((resolve) => {
       const categoriesList = [

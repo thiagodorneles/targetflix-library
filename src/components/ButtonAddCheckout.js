@@ -3,6 +3,10 @@ import Checkout from '../services/checkout'
 
 export default class ButtonAddCheckout {
   constructor (book) {
+    if (book === undefined) {
+      console.error('Book is required')
+    }
+
     this.book = book
   }
 

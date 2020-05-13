@@ -115,3 +115,24 @@ main section.content {
 .book-card-horizontal .actions button {
   margin-bottom: 10px;
 }
+
+/* BOOK DETAILS */
+.book-details .top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.book-details .info {
+  flex: 2;
+  justify-self: flex-start;
+  padding: 10px;
+}
+.book-details .actions {
+  display: flex;
+  flex-direction: column;
+}
+.book-details .description {
+  margin-top: 20px;
+}
